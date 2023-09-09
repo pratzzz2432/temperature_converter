@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #2980b9, #6ab9d5);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color:#007BFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+label {
+    flex: 1;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    flex: 2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    flex: 1;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.result {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <div class="input-group">
+            <label for="conversion-type">Conversion Type:</label>
+            <select id="conversion-type">
+                <option value="fahrenheit-to-celsius">Fahrenheit to Celsius</option>
+                <option value="celsius-to-fahrenheit">Celsius to Fahrenheit</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="celsius">Celsius:</label>
+            <input type="number" id="celsius" placeholder="Enter Celsius temperature">
+        </div>
+        <div class="input-group">
+            <label for="fahrenheit">Fahrenheit:</label>
+            <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit temperature">
+        </div>
+        <button onclick="convertTemperature()">Convert</button>
+        <button onclick="clearInputs()">Clear</button>
+    </div>
+    <script >
+       function convertTemperature() {
+    const fahrenheitInput = document.getElementById("fahrenheit");
+    const celsiusInput = document.getElementById("celsius");
+    const conversionType = document.getElementById("conversion-type").value;
+
+    if (conversionType === "fahrenheit-to-celsius") {
+        if (fahrenheitInput.value !== "") {
+            const fahrenheit = parseFloat(fahrenheitInput.value);
+            const celsius = (fahrenheit - 32) * (5 / 9);
+            celsiusInput.value = celsius.toFixed(2);
+        } else {
+            alert("Please enter a Fahrenheit temperature.");
+        }
+    } else if (conversionType === "celsius-to-fahrenheit") {
+        if (celsiusInput.value !== "") {
+            const celsius = parseFloat(celsiusInput.value);
+            const fahrenheit = (celsius * 9 / 5) + 32;
+            fahrenheitInput.value = fahrenheit.toFixed(2);
+        } else {
+            alert("Please enter a Celsius temperature.");
+        }
+    }
+}
+
+function clearInputs() {
+    document.getElementById("fahrenheit").value = "";
+    document.getElementById("celsius").value = "";
+}
+
+
+    </script>
+</body>
+</html>
